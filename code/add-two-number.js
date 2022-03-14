@@ -5,7 +5,6 @@ Write a function which takes two numbers and returns their sum.
 
 1. Can I restate the problem in my own words?
 "implement addition"
-
 2. What are the inputs that go into the  problem?
     - ints?
     - floats?
