@@ -2,29 +2,46 @@
 Write a function to find the longest common prefix string amongst an array of strings.
 If there is no common prefix, return an empty string "".
 */
+/* ======================== SOLUTIION 1 ================================ */
 var longestCommonPrefix = function (strs) {
-    let result = "";
-    let count = 0;
-    for (let i = 0; i < strs.length; i += 1) {
-        const curStr = strs[i]
-        for (let j = 0; j < curStr.length; j += 1) {
-            const letter = curStr[j]
-            if (curStr.includes(letter)) {
-                console.log('str', letter)
-
+    let prefix = '';
+    if (strs.length === 0) return prefix;
+    for (let i = 0; i < strs[0].length; i += 1) {
+        const char = strs[0][i];
+        for (let j = 0; j < strs.length; j += 1) {
+            if (strs[j][i] !== char) {
+                return prefix;
             }
         }
+        prefix += char;
     }
-    return result;
+    return prefix;
 };
 
-
 console.log(longestCommonPrefix(["flower", "flow", "flight"])) // 'fl
-
-var longestCommonPrefix = function (strs) {
+/* ======================== SOLUTIION 2 ================================ */
+var longestCommonPrefix2 = function (strs) {
     return strs.slice(1).reduce((cur, res) => {
         let cnt = 0;
         while (res?.[cnt] && res?.[cnt] === cur?.[cnt]) cnt++;
         return res.substring(0, cnt);
     }, strs[0]);
 };
+console.log(longestCommonPrefix2(["flower", "flow", "flight"])) // 'fl
+
+/* ======================== SOLUTIION 3 ================================ */
+const longestCommonPrefix3 = (strs, prefix = "", i = 0) => {
+    if (strs.length === 0) return prefix;
+    for (let i = 0; i < strs[0].length; i += 1) {
+        const char = strs[0][i];
+        for (let j = 0; j < strs.length; j += 1) {
+            if (strs[j][i] !== char) {
+                return prefix;
+            }
+        }
+        prefix += char;
+    }
+    return prefix;
+}
+
+console.log(longestCommonPrefix3(["flower", "flow", "flight"])) // 'fl
