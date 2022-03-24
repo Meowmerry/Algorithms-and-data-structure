@@ -18,8 +18,7 @@ class LinkedLists {
             let oldTail = this.tail
             this.tail = new Node(value)
             oldTail.next = this.tail
-            this.tail.prev = oldTail
-
+            //this.tail.prev = oldTail
         }
     }
     // add to beginning of list / head
@@ -92,16 +91,16 @@ let list = new LinkedLists()
 list.append(1)
 list.append(2)
 list.append(3)
-
+console.log(list) //LinkedLists { tail: null, head: null }
 list.prepend(0)
 list.prepend(-1)
 
 //console.log(list.search(1))
 //console.log(list.search(3))
 // console.log(list.search(999))
-list.deleteHead() // -1
-list.deleteTail() // 3
-list.deleteHead() // 
-list.deleteTail() // 
-list.deleteHead()
-console.log(list) //LinkedLists { tail: null, head: null }
+// list.deleteHead() // -1
+// list.deleteTail() // 3
+// list.deleteHead() // 
+// list.deleteTail() // 
+// list.deleteHead()
+// console.log(list) //LinkedLists { tail: null, head: null }
