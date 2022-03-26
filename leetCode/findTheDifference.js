@@ -12,18 +12,17 @@ Return the letter that was added to t.
 //     return String.fromCharCode(code_t - code_s);
 
 // };
-// console.log(findTheDifference("abcd", "abcde")) // e
-// console.log(findTheDifference("", "y")) // y
-//console.log(findTheDifference("abcd","abcde")) // e
+console.log(findTheDifference("abcd", "abcde")) // e
+console.log(findTheDifference("", "y")) // y
+console.log(findTheDifference("abcd", "abcde")) // e
 
-// const findTheDifference1 = function (s, t) {
-//     return String.fromCharCode([...s, ...t].reduce((acc, c) => {
-//         return acc ^ c.charCodeAt(0);
-//     }, 0))
-// };
-// console.log(findTheDifference1("abcd", "abcde")) // e
-// console.log(findTheDifference1("", "y")) // y
-// //console.log(findTheDifference("abcd","abcde")) // e
+const findTheDifference1 = function (s, t) {
+    return String.fromCharCode([...s, ...t].reduce((acc, c) => {
+        return acc ^ c.charCodeAt(0);
+    }, 0))
+};
+console.log(findTheDifference1("abcd", "abcde")) // e
+console.log(findTheDifference1("", "y")) // y
 
 const findTheDifference2 = function (s, t) {
     const sMap = new Map();
@@ -48,7 +47,6 @@ const findTheDifference2 = function (s, t) {
 };
 console.log(findTheDifference2("abcd", "abcde")) // e
 console.log(findTheDifference2("", "y")) // y
-//console.log(findTheDifference("abcd","abcde")) // e
 
 
 const findTheDifference3 = function (s, t, i = 0) {
@@ -80,3 +78,19 @@ var findTheDifference = function (s, t) {
 console.log(findTheDifference(
     "ymbgaraibkfmvocpizdydugvalagaivdbfsfbepeyccqfepzvtpyxtbadkhmwmoswrcxnargtlswqemafandgkmydtimuzvjwxvlfwlhvkrgcsithaqlcvrihrwqkpjdhgfgreqoxzfvhjzojhghfwbvpfzectwwhexthbsndovxejsntmjihchaotbgcysfdaojkjldprwyrnischrgmtvjcorypvopfmegizfkvudubnejzfqffvgdoxohuinkyygbdzmshvyqyhsozwvlhevfepdvafgkqpkmcsikfyxczcovrmwqxxbnhfzcjjcpgzjjfateajnnvlbwhyppdleahgaypxidkpwmfqwqyofwdqgxhjaxvyrzupfwesmxbjszolgwqvfiozofncbohduqgiswuiyddmwlwubetyaummenkdfptjczxemryuotrrymrfdxtrebpbjtpnuhsbnovhectpjhfhahbqrfbyxggobsweefcwxpqsspyssrmdhuelkkvyjxswjwofngpwfxvknkjviiavorwyfzlnktmfwxkvwkrwdcxjfzikdyswsuxegmhtnxjraqrdchaauazfhtklxsksbhwgjphgbasfnlwqwukprgvihntsyymdrfovaszjywuqygpvjtvlsvvqbvzsmgweiayhlubnbsitvfxawhfmfiatxvqrcwjshvovxknnxnyyfexqycrlyksderlqarqhkxyaqwlwoqcribumrqjtelhwdvaiysgjlvksrfvjlcaiwrirtkkxbwgicyhvakxgdjwnwmubkiazdjkfmotglclqndqjxethoutvjchjbkoasnnfbgrnycucfpeovruguzumgmgddqwjgdvaujhyqsqtoexmnfuluaqbxoofvotvfoiexbnprrxptchmlctzgqtkivsilwgwgvpidpvasurraqfkcmxhdapjrlrnkbklwkrvoaziznlpor", "qhxepbshlrhoecdaodgpousbzfcqjxulatciapuftffahhlmxbufgjuxstfjvljybfxnenlacmjqoymvamphpxnolwijwcecgwbcjhgdybfffwoygikvoecdggplfohemfypxfsvdrseyhmvkoovxhdvoavsqqbrsqrkqhbtmgwaurgisloqjixfwfvwtszcxwktkwesaxsmhsvlitegrlzkvfqoiiwxbzskzoewbkxtphapavbyvhzvgrrfriddnsrftfowhdanvhjvurhljmpxvpddxmzfgwwpkjrfgqptrmumoemhfpojnxzwlrxkcafvbhlwrapubhveattfifsmiounhqusvhywnxhwrgamgnesxmzliyzisqrwvkiyderyotxhwspqrrkeczjysfujvovsfcfouykcqyjoobfdgnlswfzjmyucaxuaslzwfnetekymrwbvponiaojdqnbmboldvvitamntwnyaeppjaohwkrisrlrgwcjqqgxeqerjrbapfzurcwxhcwzugcgnirkkrxdthtbmdqgvqxilllrsbwjhwqszrjtzyetwubdrlyakzxcveufvhqugyawvkivwonvmrgnchkzdysngqdibhkyboyftxcvvjoggecjsajbuqkjjxfvynrjsnvtfvgpgveycxidhhfauvjovmnbqgoxsafknluyimkczykwdgvqwlvvgdmufxdypwnajkncoynqticfetcdafvtqszuwfmrdggifokwmkgzuxnhncmnsstffqpqbplypapctctfhqpihavligbrutxmmygiyaklqtakdidvnvrjfteazeqmbgklrgrorudayokxptswwkcircwuhcavhdparjfkjypkyxhbgwxbkvpvrtzjaetahmxevmkhdfyidhrdeejapfbafwmdqjqszwnwzgclitdhlnkaiyldwkwwzvhyorgbysyjbxsspnjdewjxbhpsvj")) // t
 
+
+var findTheDifference = function (s, t) {
+    const cache = {};
+    for (const char of s) {
+        if (!cache[char]) {
+            cache[char] = 0;
+        }
+        cache[char]++;
+    }
+    for (const char of t) {
+        if (!cache[char]) {
+            return char;
+        }
+        cache[char]--;
+    }
+};

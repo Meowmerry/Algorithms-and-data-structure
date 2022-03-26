@@ -4,33 +4,35 @@ function HashTable() {
   // the array will be instantiated as [undefined, undefined....]
   // pop() and push() shouldn't be used on the storage
   this.storage = new Array(this.SIZE);
-  // iterate thru this.storage.length 
-  for (let i = 0; i < this.storage.length; i++) {
-    // assign this.storage each element to new Map()
-    this.storage[i] = new Map()
-  }
 }
 
 // stores a value in the storage array
 // hint: use the hash function to determine where in the array to store the value
 HashTable.prototype.set = function (key, value) {
-  // declare a variable index,  invoke HashTable passed key and this.size
-  let index = hashCode(key, this.SIZE);
-  this.storage[index].set(key, value);
+  let hash = hashCode(key, this.SIZE)
+
+  if (this.storage[hash]) this.storage[hash][key] = value;
+  else {
+    this.storage[hash] = {}
+    this.storage[hash][key] = value;
+  }
+
+  // if (!this.storage[hash]) this.storage[hash] = {};
+  // this.storage[hash][key] = value;
 };
 
 // return a previously stored value
 HashTable.prototype.get = function (key) {
-  let index = hashCode(key, this.SIZE);
-  return this.storage[index].get(key)
+  let hash = hashCode(key, this.SIZE);
+  return this.storage[hash][key]
 };
 
 // returns and removes a key from the hash table
 HashTable.prototype.remove = function (key) {
-  let index = hashCode(key, this.SIZE);
-  let remove = this.storage[index].get(key)
-  this.storage[index].delete(key)
-  return remove
+  let hash = hashCode(key, this.SIZE);
+  let removed = this.storage[hash][key]
+  this.storage[hash][key]
+  return removed
 };
 
 // returns a number between 0 and size that is unique* and generated from the the inputted string

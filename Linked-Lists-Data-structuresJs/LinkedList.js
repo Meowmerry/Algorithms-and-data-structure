@@ -2,22 +2,18 @@ function LinkedList(...value) {
   this.head = null;
   this.tail = null;
   this.length = 0;
-
-  // if (value) {
-  //   let newList = { ...value }
-  //   for (const key in newList) {
-  //     console.log('newList', newList)
-  //   }
-  //   this.head = newList;
-  // } else {
-  // this.head = null;
-  // this.tail = null;
-  // }
+  if (value) {
+    let newList = { ...value }
+    for (const key in newList) {
+      this.push(newList[key])
+    }
+  }
 }
 
 function Node(val) {
   this.value = val;
   this.next = null;
+  this.back = null;
 }
 
 // adds node to end of list
@@ -28,6 +24,7 @@ LinkedList.prototype.push = function (value) {
     let oldTail = this.tail;
     this.tail = new Node(value);
     oldTail.next = this.tail;
+    this.tail.back = oldTail
   }
 };
 
@@ -50,12 +47,35 @@ LinkedList.prototype.addToHead = function (value) {
     let oldHead = this.head;
     this.head = new Node(value);
     this.head.next = oldHead;
+    oldHead.back = this.head;
   }
 };
 
 // Extra Bonus
 // insert an item at the position specified
-LinkedList.prototype.insert = function (value, position = this.length) { // need to have a length, assign to position
+LinkedList.prototype.insert = function (value, position) {// need to have a length, assign to position
+
+  //   //if position = 0, use method add to head
+  //   if (position === 0) this.addToHead(value);
+  //   else {
+  //     let currentNode = this.head;
+  //     let count = 0;  // <--version 1 using count variable
+  //     while (count < position) {  // <--version 1 using count variable
+  //       if (count === position - 1) {  // <--version 1 using count variable
+  //     // while (position > 0) {   // <--refactored version 2 w/out count variable
+  //     //   if (position === 1) {  // <--refactored version 2 w/out count variable
+  //         let tempNode = currentNode.next;
+  //         currentNode.next = new Node(value);
+  //         currentNode.next.next = tempNode;
+  //       }
+  //       currentNode = currentNode.next;
+  //       count++;  // <--version 1 using count variable
+  //       // position--;  // <--refactored version 2 w/out count variable
+  //     };
+  //   }
+  // }
+
+
   // declare a node with new Node passed in value
   let node = new Node(value)
   // check if this.head === null
@@ -87,6 +107,7 @@ LinkedList.prototype.insert = function (value, position = this.length) { // need
   // return node
   return node
 }
+
 // Extra Bonus
 // remove first occurrence of value from list
 LinkedList.prototype.removeItem = function (value) {
@@ -99,14 +120,16 @@ LinkedList.prototype.removePosition = function (position) {
 
 };
 
-const list = new LinkedList()
-list.insert(5, 0);
-list.push(1);
-list.push(2);
-list.push(3);
-list.push(4);
-list.insert(8, 3);
-console.log(list)
+// const list = new LinkedList()
+// list.insert(5, 0);
+// list.push(1);
+// list.push(2);
+// list.push(3);
+// list.push(4);
+// list.insert(8, 3);
+//console.log(list)
 
-// const newList = new LinkedList(5, 1, 2, 6, 8)
-// console.log('--->', newList)
+const newList = new LinkedList(5, 1, 2, 6, 8)
+//console.log('--->', newList) 
+newList.addToHead(7)
+console.log('--->', newList) 

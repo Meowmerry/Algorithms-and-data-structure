@@ -64,8 +64,6 @@ class LinkedLists {
             }
             return removeTail.value
         }
-
-
     }
     search(value) {
         let currentNode = this.head
