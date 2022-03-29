@@ -21,7 +21,7 @@ Output: Because nums[0] + nums[1] == 9, we return [0, 1] */
 //let nums = [2, 7, 11, 15], target = 9;
 
 
-// Solution 1 ---> naive O(N2)
+// Solution 1 ---> naive O(N*2)
 function twoSum(nums, target) {
     let result = [];
     for (let i = 0; i < nums.length; i++) {
@@ -50,8 +50,8 @@ function twoSum(nums, target) {
         }
     }
 }
-let nums = [3, 2, 4], target = 6;
-console.log('twoSum', twoSum(nums, target))
+let nums1 = [3, 2, 4], target1 = 6;
+console.log('twoSum', twoSum(nums1, target1))
 
 
 //Solution 3 ---> naive O(N)
@@ -72,8 +72,8 @@ function twoSum(nums, target) {
     return sum
 }
 // let nums = [3, 6, 4, 5], target = 10;
-let nums = [3, 2, 3], target = 6;
-console.log('twoSum', twoSum(nums, target))
+let nums2 = [3, 2, 3], target2 = 6;
+console.log('twoSum', twoSum(nums2, target2))
 
 // Looking for a target, we can utilize some elementary alegbra...
 // By subtracting the value we're looping over from the target number, we 
@@ -125,8 +125,8 @@ var twoSum = function (nums, target) {
 
 };
 
-let nums = [2, 7, 11, 15], target = 9;
-console.log('twoSum', twoSum(nums, target))
+let nums4 = [2, 7, 11, 15], target4 = 9;
+console.log('twoSum', twoSum(nums4, target4))
 
 
 
