@@ -23,7 +23,37 @@ coinSum(1) === 1
 // aka, there's only two ways to make 2p. that's with two, 1p pieces or with a single 2p piece
 coinSum(2) === 2
 */
-
 function coinSum() {
+    var coins = [1, 2, 5, 10, 20, 50, 100, 200];
+    var sum = arguments[0] + 1;
+    var len = coins.length;
 
+    var table = new Array(sum);
+    var base_cell = [];
+
+
+    for (var i = 0; i !== len; i++) {
+        base_cell.push(1);
+    }
+
+    table[0] = base_cell;
+
+    for (var i = 1; i != sum; i++) {
+        table[i] = new Array(len);
+
+        for (var j = 0; j != len; j++) {
+            var x = 0;
+            var y = 0;
+
+            if (i - coins[j] >= 0)
+                x = table[i - coins[j]][j];
+
+            if (j >= 1)
+                y = table[i][j - 1];
+
+            table[i][j] = x + y;
+        }
+    }
+
+    return table[sum - 1][len - 1];
 }

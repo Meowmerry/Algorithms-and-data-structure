@@ -12,7 +12,6 @@ describe('insertionSort', () => {
     const clone = largeArray.slice();
     expect(insertionSort(clone)).to.eql(largeArray.sort(inc));
   });
-
 });
 
 function makeList(num) {
@@ -22,6 +21,7 @@ function makeList(num) {
   }
   return arr;
 }
+
 
 function inc(a, b) {
   return a - b;
