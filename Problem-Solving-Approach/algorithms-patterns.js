@@ -19,17 +19,17 @@ It's the foundation for being a successful problem solving and developer
 
 ============== #INTERVIEWS ==============
 
-HOW DO YOU IMPROVE?
+ ***** HOW DO YOU IMPROVE? ***
 1. Devise a plan for solving problems
 2. Master common problem solving patterns
 
-OBLEM SOLVING
+**** PROBLEM SOLVING **** 
 Strategies
 
 A SIMPLE, FOOLPROOF, MAGICAL, MIRACULOUS, FAIL-SAFE APPROACH
 * NOT REALLY
 
-* BUT IT'S STILL HELPFUL
+*  BUT IT'S STILL HELPFUL
 PROBLEM SOLVING
 - Understand the Problem
 - Explore Concrete Examples
@@ -37,39 +37,58 @@ PROBLEM SOLVING
 - Solve/Simplify
 - Look Back and Refactor
 
-Note: many of these strategies are adapted from George Polya, 
+* Note: many of these strategies are adapted from George Polya, 
 whose book How To Solve It is a great resource for anyone who wants to become a better problem solver
 
-UNDERSTAND THE PROBLEM
+* UNDERSTAND THE PROBLEM
 1. Can I restate the problem in my own words?
 2. What are the inputs that go into the problem?
 3. What are the outputs that should come from the solution to the problem?
-4. Can the outputs be determined from the inputs? In other words, do I have enough information to solve the problem? (You may not be able to answer this question until you set about solving the problem. That's okay; it's still worth considering the question at this early stage.)
+4. Can the outputs be determined from the inputs? In other words, 
+do I have enough information to solve the problem? 
+(You may not be able to answer this question until you set about solving the problem. 
+That's okay; it's still worth considering the question at this early stage.)
 5. How should I label the important pieces of data that are a part of the problem?
 
 
-Write a function which takes two numbers and returns their sum.
-
-
+* Write a function which takes two numbers and returns their sum. *
 #EXPLORE EXAMPLES
 
+1. Can I restate the problem in my own words? 
+===> implement  addition
+
+2. What are the inputs that go into the problem?  
+===> - ints? , floats? , what about string for large numbers?
+
+3. What are the outputs that should come from the solution to the problem?
+===> - ints? , floats? , string?
+
+4. Can the outputs be determined from the inputs? In other words, 
+do I have enough information to solve the problem? 
+(You may not be able to answer this question until you set about solving the problem. 
+That's okay; it's still worth considering the question at this early stage.)
+===> 
+
+5. How should I label the important pieces of data that are a part of the problem?
+===> 
+
+
+* * * EXPLORE EXAMPLES *******************
 Coming up with examples can help you understand the problem better
-
 Examples also  provide sanity checks that your eventual solution works how it should
-
 User Stories!
-
 Unit Tests!
 
-EXPLORE EXAMPLES
+
+* * * EXPLORE EXAMPLES *******************
 - Start with Simple Examples
 - Progress to More Complex Examples
 - Explore Examples with Empty Inputs
 - Explore Examples with Invalid Inputs
 
-Write a function which takes in a string and returns counts of each character in the string.
+* Write a function which takes in a string and returns counts of each character in the string.
 
-#BREAK IT DOWN
+* #BREAK IT DOWN
 Explicitly write out the steps you need to take.
 
 This forces you to think about the code you'll write before you write it, 
@@ -78,19 +97,23 @@ before you dive in and have to worry about details (e.g. language syntax) as wel
 
 Write a function which takes in a string and returns counts of each character in the string.
 
-SOLVE THE PROBLEM
+* SOLVE THE PROBLEM
 If you can't...
 
-SOLVE A SIMPLER PROBLEM!
+* SOLVE A SIMPLER PROBLEM!
 - Find the core difficulty in what you're trying to do
 - Temporarily ignore that difficulty
 - Write a simplified solution
 - Then incorporate that difficulty back in
 
 Write a function which takes in a string and returns counts of each character in the string.
+charCount("aaaa") // {a: 4, b: 0, c: 0}
+if input with space so will count space too?? all different if Upper, or Lower? 
+if not input? like, what we should to return ?
+if they pass in other type, think about eadg case keep in mind;
 
 
-LOOK BACK
+* LOOK BACK
 & REFACTOR
 Congrats on solving it, but you're not done!
 
