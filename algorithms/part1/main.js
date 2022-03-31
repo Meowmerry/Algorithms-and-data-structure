@@ -121,7 +121,8 @@ function nthFibonacci(num) {
  * boundShout(); -> prints 'bob'
  */
 function functionBind(func, context) {
-
+  context.func = func;
+  return ()=> context.func()
 }
 
 /**
@@ -132,10 +133,58 @@ function functionBind(func, context) {
  * ['paper','paper'],['paper','scissors'],['paper','rock'],
  * ['scissors','scissors'],['scissors','paper'],['scissors','rock']]
  */
+function rockPaperScissors(num , result= [], buffer = []) {
+  if(num === 0) return buffer;
+  if(buffer.length === num) result.push(buffer);
+  else {
+    rockPaperScissors(num, result, [...buffer,'rock']);
+    rockPaperScissors(num, result, [...buffer,'paper']);
+    rockPaperScissors(num, result, [...buffer,'scissors']);
+  }
+   return result; 
+}
+/*
+============ SOLUTION 2 ================================
 function rockPaperScissors(num) {
-    
+  if (num === 0) return [];
+
+  const items = ['rock', 'paper', 'scissors'];
+  if (num === 1) {
+    return [[items[0]], [items[1]], [items[2]]];
+  }
+  const result = []
+  const lastCall = rockPaperScissors(num - 1);
+  for (let i = 0; i < lastCall.length; i++) {
+    for (let j = 0; j < 3; j++) {
+      const newArr = [];
+      newArr.push(...lastCall[i]);
+      newArr.push(items[j]);
+      result.push(newArr);
+    }
+  }
+  return result;
 }
 
+============ SOLUTION 3 ================================
+function rockPaperScissors(num) { //step 1: if num was 2
+  if (num === 0) return [];
+  const results = [];
+  function recurse(num, memo = []) {
+      if (memo.length === num) {
+          results.push(memo);
+          return;
+      };
+      recurse(num, [...memo, 'rock']);
+      recurse(num, [...memo, 'paper']);
+      recurse(num, [...memo, 'scissors']);
+  };
+  recurse(num); //step 2: recurse 2
+  return results;
+}
+
+
+============ SOLUTION 3 ================================
+*/
 function insertionSort(array) {
     
 }
