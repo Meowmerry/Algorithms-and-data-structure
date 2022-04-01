@@ -131,61 +131,63 @@ Congrats on solving it, but you're not done!
 Write a function which takes in a string and returns counts of each character in the string.
 
 
-RECAP!
-Understand the Problem
-Explore Concrete Examples
-Break It Down
-Solve/Simplify
-Look Back and Refactor
+* =========== RECAP! ===========
+- Understand the Problem
+- Explore Concrete Examples
+- Break It Down
+- Solve/Simplify
+- Look Back and Refactor
 
 
-HOW DO YOU IMPROVE?
-Devise a plan for solving problems
-Master common problem solving patterns
-Devise a plan for solving problems
+* =========== HOW DO YOU IMPROVE?  ===========
+- Devise a plan for solving problems
+- Master common problem solving patterns
 Next Up!!!
 
 
-#SOME PATTERNS...
-Frequency Counter
-Multiple Pointers
-Sliding Window
-Divide and Conquer
-Dynamic Programming
-Greedy Algorithms
-Backtracking
-Many more!
+
+* ===========  #SOME PATTERNS... ===========
+- Frequency Counter
+- Multiple Pointers
+- Sliding Window
+- Divide and Conquer
+- Dynamic Programming
+- Greedy Algorithms
+- Backtracking
+- Many more!
 
 
-***  FREQUENCY COUNTERS ****
+* ===========   FREQUENCY COUNTERS ****  ===========
 This pattern uses objects or sets to collect values/frequencies of values
 
 This can often avoid the need for nested loops or O(N^2) operations with arrays / strings
 
 AN EXAMPLE
-Write a function called same, which accepts two arrays. The function should return true if every value in the array has it's corresponding value squared in the second array. The frequency of values must be the same.
+Write a function called same, which accepts two arrays. 
+The function should return true if every value in the array 
+has it's corresponding value squared in the second array. 
+The frequency of values must be the same.
 
 same([1,2,3], [4,1,9]) // true
 same([1,2,3], [1,9]) // false
 same([1,2,1], [4,4,1]) // false (must be same frequency)
 
-A NAIVE SOLUTION
+* ============ A NAIVE SOLUTION ****  ===========
 */
 function same(arr1, arr2) {
-    if (arr1.length !== arr2.length) {
-        return false;
-    }
+    if (arr1.length !== arr2.length) return false;
     for (let i = 0; i < arr1.length; i++) {
         let correctIndex = arr2.indexOf(arr1[i] ** 2)
-        if (correctIndex === -1) {
-            return false;
-        }
+        if (correctIndex === -1) return false;
         arr2.splice(correctIndex, 1)
     }
     return true
 }
+same([1, 2, 3], [4, 1, 9]) // true
+same([1, 2, 3], [1, 9]) // false
+same([1, 2, 1], [4, 4, 1]) // false (must be same frequency)
 
-// Time Complexity - N^2
+// * ============ Time Complexity - N^2
 /*
 ANAGRAMS
 Given two strings, write a function to determine if the second string is an anagram of the first. An anagram is a word, phrase, or name formed by rearranging the letters of another, such as cinema, formed from iceman.
@@ -364,14 +366,10 @@ search([1, 2, 3, 4, 5, 6], 11) // -1
 //Refactor
 
 function search(array, val) {
-
     let min = 0;
     let max = array.length - 1;
-
     while (min <= max) {
         let middle = Math.floor((min + max) / 2);
-        let currentElement = array[middle];
-
         if (array[middle] < val) {
             min = middle + 1;
         } else if (array[middle] > val) {
@@ -380,15 +378,16 @@ function search(array, val) {
             return middle;
         }
     }
-
     return -1;
 }
 //COPY
 //Time Complexity - Log(N) - Binary Search!
 
-/*Recap
+/* 
+* ============ *Recap ============
 Developing a problem solving approach is incredibly important
 Thinking about code before writing code will always make you solve problems faster
 Be mindful about problem solving patterns
-Using frequency counters, multiple pointers, sliding window and divide and conquer will help you reduce time and space complexity and help solve more challenging problems
+Using frequency counters, multiple pointers, sliding window and divide and conquer 
+will help you reduce time and space complexity and help solve more challenging problems
 */

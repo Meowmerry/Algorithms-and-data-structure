@@ -115,10 +115,8 @@ function nthFibonacci(num) {
  * boundShout(); -> prints 'bob'
  */
 function functionBind(func, context) {
-  context.func = func;
-  return () => {
-    return context.func();
-  };
+  context.f = func;
+  return () => context.f();
 }
 
 /**
@@ -212,41 +210,95 @@ function rockPaperScissors(num) {
 
 */
 
-function insertionSort(array) {
-  let sortedArr = [];
-  sortedArr.push(array[0]);
-  let unsortedArr = array.slice(1);
+// function insertionSort(array) {
+//   let sortedArr = [];
+//   sortedArr.push(array[0]);
+//   let unsortedArr = array.slice(1);
 
-  function sortItem(sortedArr, unsortedArr) {
-    let toSort = unsortedArr.shift();
-    if (toSort > sortedArr[sortedArr.length - 1]) {
-      sortedArr.push(toSort);
-    } else if (toSort < sortedArr[0]) {
-      sortedArr.unshift(toSort);
-    } else {
-      for (i = sortedArr.length - 1; i >= 0; i--) {
-        if (toSort < sortedArr[i]) {
-          continue;
-        }
-        sortedArr.splice(i + 1, 0, toSort);
+//   function sortItem(sortedArr, unsortedArr) {
+//     let toSort = unsortedArr.shift();
+//     if (toSort > sortedArr[sortedArr.length - 1]) {
+//       sortedArr.push(toSort);
+//     } else if (toSort < sortedArr[0]) {
+//       sortedArr.unshift(toSort);
+//     } else {
+//       for (i = sortedArr.length - 1; i >= 0; i--) {
+//         if (toSort < sortedArr[i]) {
+//           continue;
+//         }
+//         sortedArr.splice(i + 1, 0, toSort);
+//         break;
+//       }
+//     }
+//     if (unsortedArr.length) {
+//       return sortItem(sortedArr, unsortedArr);
+//     }
+//     return sortedArr;
+//   }
+//   return sortItem(sortedArr, unsortedArr);
+// }
+
+function insertionSort(array) {
+  //loop through array index i
+  //at each element[i], loop through array starting index i
+  //declare a currIndex;
+
+  //inside the inner loop, find the smallest element
+  //if true: reassign min to array[j], 
+  // ressign currIndex = j
+
+  // move the smallest element to the current index at array[i]
+
+  // declare variable temp assign to element at i
+  // swicth the value at the indicass... element at i = min
+  // reassign the array input at the current index assing to temp
+
+  // return array
+  //   let min = Infinity;
+  //   for (let i = 0; i < array.length; i++) {
+  //     console.log(array[i])
+
+  //     let minIndex;
+  //     for (let j = i + 1; j < array.length; j++) {
+  //       if (array[j] < min) {
+  //         min = array[j]
+  //         minIndex = j
+  //       }
+  //     }
+  //     console.log(min)
+  //     let temp = array[i]
+  //     array[i] = min;
+  //     array[minIndex] = temp;
+  //   }
+  //   return array;
+  // }
+
+  //loop through array,
+  //at each element, see where we can place it inside the array
+  //compare it with elements that come before it, (left of current element)
+  //if it is smaller than left element, we can place current element in that index
+  //move everything from current index right 
+  for (let i = 0; i < array.length; i++) { // 4 = 0 // 3  = 1
+    //at each element, see where we can place it inside the array
+    for (let j = 0; j < i; j++) { // j = 0 / i = 1
+      //compare it with elements that come before it, (left of current element)
+      if (array[i] < array[j]) { // arr[i] = 3 < arr[j] = 4
+        array.splice(j, 0, array[i]) //insert current element at index j  // [4,3].splice(0,0,3) array = [3,4,3]
+        array.splice(i + 1, 1) //delete duplicate current elemet at old index i+1 // [3,4,3].splice(i+1=2,1) remove array[2]
         break;
       }
     }
-    if (unsortedArr.length) {
-      return sortItem(sortedArr, unsortedArr);
-    }
-    return sortedArr;
   }
-  return sortItem(sortedArr, unsortedArr);
+  return array
 }
 
+function swap(thatCoolArray, i1, i2) {
+  let temp = thatCoolArray[i1];
+  thatCoolArray[i1] = thatCoolArray[i2];
+  thatCoolArray[i2] = temp;
+}
 
 function bubbleSort(array) {
-  function swap(thatCoolArray, i1, i2) {
-    let temp = thatCoolArray[i1];
-    thatCoolArray[i1] = thatCoolArray[i2];
-    thatCoolArray[i2] = temp;
-  }
   let swapped = true;
   while (swapped) {
     swapped = false;
@@ -259,6 +311,31 @@ function bubbleSort(array) {
   }
   return array;
 }
+
+// function bubbleSort(arr) {
+//   // iterate at the beginning of the array, i will be the array length each time
+//   for (let i = arr.length; i >= 0; i--) {
+
+//     //declare a variable equal to zero
+//     let j = 0;
+//     // while the current length of the array is more than next index
+//     while (i > j + 1) {
+//       //declare a variable arr [j] for curindex value
+//       let curInd = arr[j]
+//       // declare variable arr[i+1] for next index value
+//       let nextInd = arr[j + 1]
+//       // scan the curindex and the next index with each iteration
+//       // if the value of the cur index is greater then the next index swap them (use strat from fisher yates - shuf algo)
+//       if (curInd > nextInd) {
+//         let temp = arr[j];
+//         arr[j] = arr[j + 1];
+//         arr[j + 1] = temp;
+//       }
+//       j++
+//     }
+//   }
+//   return arr;
+// }
 
 function mergeSort(array) {
   if (array.length <= 1) return array;
@@ -304,3 +381,16 @@ function mergeSort(array) {
   return arr;
 }
 */
+
+function insertionSort(array) {
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < i; j++) {
+      if (array[i] < array[j]) {
+        array.splice(j, 0, array[i])
+        array.splice(i + 1, 1)
+        break;
+      }
+    }
+  }
+  return array
+}

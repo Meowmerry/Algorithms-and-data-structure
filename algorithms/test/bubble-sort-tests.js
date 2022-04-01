@@ -13,7 +13,7 @@ describe('bubbleSort', () => {
     expect(bubbleSort(clone)).to.eql(largeArray.sort(inc));
   });
 
-  xit('should handle a very, very large but already sorted arrays', () => {
+  it('should handle a very, very large but already sorted arrays', () => {
     const ultraArray = [];
     for (let i = 0; i < 10000000; i++) {
       ultraArray.push(i);

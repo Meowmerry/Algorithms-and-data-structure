@@ -1,4 +1,4 @@
-function same(arr1, arr2) {
+function same(arr1, arr2) { // Time Complexity - O(n)
     if (arr1.length !== arr2.length) {
         return false;
     }
@@ -10,8 +10,8 @@ function same(arr1, arr2) {
     for (let val of arr2) {
         frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1
     }
-    // console.log(frequencyCounter1);
-    // console.log(frequencyCounter2);
+    console.log(frequencyCounter1);
+    console.log(frequencyCounter2);
     for (let key in frequencyCounter1) {
         if (!(key ** 2 in frequencyCounter2)) {
             return false
@@ -24,4 +24,3 @@ function same(arr1, arr2) {
 }
 console.log('same', same([1, 2, 3], [9, 1, 4])) // true
 //console.log('same', same([1, 2, 3, 2, 5], [9, 1, 4, 4, 11])) // true
-

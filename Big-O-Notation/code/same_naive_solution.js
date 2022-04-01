@@ -1,4 +1,4 @@
-function same(arr1, arr2) {
+function same(arr1, arr2) { // Time Complexity -  O(n^2)
     if (arr1.length !== arr2.length) {
         return false;
     }
@@ -14,4 +14,3 @@ function same(arr1, arr2) {
 }
 
 console.log(same([1, 2, 3], [9, 1, 4]))
-

@@ -1,7 +1,5 @@
 function validAnagram(first, second) {
-  if (first.length !== second.length) {
-    return false;
-  }
+  if (first.length !== second.length) return false;
 
   const lookup = {};
 
@@ -26,3 +24,13 @@ function validAnagram(first, second) {
 
 // {a: 0, n: 0, g: 0, r: 0, m: 0,s:1}
 console.log(validAnagram('anagrams', 'nagaramm'))
+
+function validAnagram1(first, second) {
+  first = first.split('').sort().join('')
+  second = second.split('').sort().join('')
+  if (first === second) return true;
+  else return false;
+}
+console.log(validAnagram1('anagrams', 'nagaramm'))
+console.log(validAnagram1('aaz', 'zza'))
+console.log(validAnagram1('qwerty', 'qeywrt'))
