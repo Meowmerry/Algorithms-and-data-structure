@@ -296,21 +296,38 @@ Implement a
 
 function called countUniqueValues, which accepts a sorted array, and counts the unique values in the array.There can be negative numbers in the array, but it will always be sorted.
 */
-countUniqueValues([1, 1, 1, 1, 1, 2]) // 2
-countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13]) // 7
-countUniqueValues([]) // 0
-countUniqueValues([-2, -1, -1, 0, 1]) // 4
+function countUniqueValues(arr) {
+    // if arr length is 0 return 0
+    if (arr.length === 0) return 0;
+    // set initial i at 0 
+    let i = 0;
+    // iterate through arr, start at second index, so set j = 1,
+    for (let j = 1; j < arr.length; j++) {
+        // check if arr at 1 is NOT equal to arr at j, then increment i by 1
+        if (arr[i] !== arr[j]) {
+            i++;
+            // assign arr at i equal to arr at j
+            arr[i] = arr[j];
+        }
+    }
+    // return i add  by 1
+    return i + 1;
+}
+console.log(countUniqueValues([1, 2, 2, 5, 7, 7, 99])); // 5
+console.log(countUniqueValues([1, 1, 1, 1, 1, 2])) // 2
+console.log(countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13])) // 7
+console.log(countUniqueValues([])) // 0
+console.log(countUniqueValues([-2, -1, -1, 0, 1])) // 4
 
 
 /*
-SLIDING WINDOW
+* ============== SLIDING WINDOW ==============
 This pattern involves creating a window which can either be an array or number from one position to another
 
 Depending on a certain condition, the window either increases or closes(and a new window is created)
 
 Very useful
 for keeping track of a subset of data in an array / string etc.
-
 
 An Example
 Write a
@@ -319,11 +336,25 @@ function called maxSubarraySum which accepts an array of integers and a number c
 
 function should calculate the maximum sum of n consecutive elements in the array.
 */
-maxSubarraySum([1, 2, 5, 2, 8, 1, 5], 2) // 10
-maxSubarraySum([1, 2, 5, 2, 8, 1, 5], 4) // 17
-maxSubarraySum([4, 2, 1, 6], 1) // 6
-maxSubarraySum([4, 2, 1, 6, 2], 4) // 13
-maxSubarraySum([], 4) // null
+const maxSubarraySumNaive = (arr, num) => {
+    if (num > arr.length) return null;
+    let max = -Infinity;
+    for (let i = 0; i < arr.length - num + 1; i += 1) {
+        let temp = 0;
+        for (let j = 0; j < num; j += 1) {
+            temp += arr[i + j]
+        }
+        if (temp > max) {
+            max = temp;
+        }
+    }
+    return max;
+}
+console.log(maxSubarraySumNaive([1, 2, 5, 2, 8, 1, 5], 2)) // 10
+console.log(maxSubarraySumNaive([1, 2, 5, 2, 8, 1, 5], 4)) // 17
+console.log(maxSubarraySumNaive([4, 2, 1, 6], 1)) // 6
+console.log(maxSubarraySumNaive([4, 2, 1, 6, 2], 4)) // 13
+console.log(maxSubarraySumNaive([], 4)) // null
 
 //Refactor
 
@@ -331,19 +362,32 @@ function maxSubarraySum(arr, num) {
     let maxSum = 0;
     let tempSum = 0;
     if (arr.length < num) return null;
+    // iterate thru num, if i < num 
     for (let i = 0; i < num; i++) {
+        // reassign maxSum add to current element
         maxSum += arr[i];
     }
+    // assign maxSum to tmepSum
     tempSum = maxSum;
+
+    // iterate thru array, start i at num, 
     for (let i = num; i < arr.length; i++) {
+        // reassign tempSum by add to the current element and subtract the next index.
         tempSum = tempSum - arr[i - num] + arr[i];
+        // finding maxSum
         maxSum = Math.max(maxSum, tempSum);
+        // if (tempSum > maxSum) { if don't want to use Math.max()
+        //     maxSum = tempSum;
+        // }
     }
     return maxSum;
 }
+console.log(maxSubarraySum([1, 2, 5, 2, 8, 1, 5], 2)) // 10
 // Time Complexity - O(N)
 
-/* Divide and Conquer
+
+/* 
+* ================ Divide and Conquer ================
 This pattern involves dividing a data set into smaller chunks and then repeating a process with a subset of data.
 
 This pattern can tremendously decrease time complexity
@@ -385,6 +429,7 @@ function search(array, val) {
 }
 //COPY
 //Time Complexity - Log(N) - Binary Search!
+
 
 /* 
 * ============ *Recap ============
