@@ -34,3 +34,21 @@ function validAnagram1(first, second) {
 console.log(validAnagram1('anagrams', 'nagaramm'))
 console.log(validAnagram1('aaz', 'zza'))
 console.log(validAnagram1('qwerty', 'qeywrt'))
+
+function validAnagram2(first, second) {
+  if (first.length !== second.length) return false;
+  const lookup = {};
+  for (let i = 0; i < first.length; i += 1) {
+    const letter = first[i];
+    lookup[letter] ? lookup[letter] += 1 : lookup[letter] = 1;
+  }
+  for (let i = 0; i < second.length; i += 1) {
+    const letter = second[i];
+    if (!lookup[letter]) return false;
+    else lookup[letter] -= 1;
+  }
+  return true;
+}
+console.log(validAnagram2('anagrams', 'nagaramm'))
+console.log(validAnagram2('aaz', 'zaa'))
+console.log(validAnagram2('qwerty', 'qeywrt'))

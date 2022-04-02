@@ -159,8 +159,8 @@ Next Up!!!
 
 * ===========   FREQUENCY COUNTERS ****  ===========
 This pattern uses objects or sets to collect values/frequencies of values
-
 This can often avoid the need for nested loops or O(N^2) operations with arrays / strings
+
 
 AN EXAMPLE
 Write a function called same, which accepts two arrays. 
@@ -201,16 +201,19 @@ validAnagram('qwerty', 'qeywrt') // true
 validAnagram('texttwisttime', 'timetwisttext') // true
 
 /*
-MULTIPLE POINTERS
-Creating pointers or values that correspond to an index or position and move towards the beginning, end or middle based on a certain condition
+* =============== MULTIPLE POINTERS * =============== 
+Creating pointers or values that correspond to an index or position and move towards the beginning, 
+end or middle based on a certain condition
+Linear , Linked lists
 
 Very efficient for solving problems with minimal space complexity as well
 
 
 AN EXAMPLE
-Write a function called sumZero which accepts a sorted array of integers. The function should find the first pair where the sum is 0. Return an array that includes both values that sum to zero or undefined if a pair does not exist
+Write a function called sumZero which accepts a sorted array of integers. 
+The function should find the first pair where the sum is 0. 
+Return an array that includes both values that sum to zero or undefined if a pair does not exist
 */
-
 // NAIVE SOLUTION
 function sumZero(arr) {
     for (let i = 0; i < arr.length; i++) {
