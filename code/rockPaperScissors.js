@@ -6,7 +6,7 @@
  * ['paper','paper'],['paper','scissors'],['paper','rock'],
  * ['scissors','scissors'],['scissors','paper'],['scissors','rock']]
  */
-function rockPaperScissors(num, ans = [], buffer = []) {
+function rockPaperScissors(num, ans = [], buffer = []) { // Time Complexity O(3^N) , Space O(N)
     // if num === 0 return ans;
     // if length of buffer is === num, store buffer by pushing to ans
     // else each call rockPaperScissors and passed num, ans, array of the rest of buffer, concat with rock, paper, scissors
@@ -22,7 +22,11 @@ function rockPaperScissors(num, ans = [], buffer = []) {
 /* 
 Input  : Number
 Output : Array with subarray
-Strategy : recursion and nested helper funciton
+Strategy : recursion and nested helper function
+
+Time complexity =>  O(3^n)  ==> anything ^ n is exponential, It is quadratic 
+Space complexity  => O(n)
+
 */
 function rockPaperScissors(num, ans = [], buffer = []) {
     if (num === 0) return [];
