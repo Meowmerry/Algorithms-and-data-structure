@@ -39,10 +39,10 @@ OK, OK I'm done.
 Now we just need to learn a bit of ES2015 syntax that we'll use along the way
 
 
-ES2015  CLASS SYNTAX
+*  ============ ES2015  CLASS SYNTAX ============
 
 
-OBJECTIVES
+*  OBJECTIVES
 - Explain what a class is
 - Understand how JavaScript implements the idea of classes
 - Define terms like abstraction, encapsulation and polymorphism
