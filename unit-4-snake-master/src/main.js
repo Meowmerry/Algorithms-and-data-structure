@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const board = document.querySelector("#board");
 
   const head = new Head(board);
-  new Apple(board);
+  //new Apple(board);
 
   body.addEventListener("keydown", (e) => {
     if (e.code === "ArrowLeft") {

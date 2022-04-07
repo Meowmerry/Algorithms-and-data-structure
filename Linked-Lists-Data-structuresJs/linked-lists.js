@@ -32,7 +32,6 @@ class LinkedLists {
             oldHead.prev = this.head
             this.head.next = oldHead
         }
-
     }
     deleteHead() {
         // if the list is empty
@@ -86,12 +85,12 @@ class Node {
     }
 }
 let list = new LinkedLists()
-list.append(1)
-list.append(2)
-list.append(3)
+list.prepend(1)
+list.prepend(2)
+list.prepend(3)
 console.log(list) //LinkedLists { tail: null, head: null }
-list.prepend(0)
-list.prepend(-1)
+// list.prepend(0)
+// list.prepend(-1)
 
 //console.log(list.search(1))
 //console.log(list.search(3))
