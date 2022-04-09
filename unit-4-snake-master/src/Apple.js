@@ -1,21 +1,29 @@
-//https://stackoverflow.com/questions/55668801/how-to-make-an-image-appear-on-a-random-position-onclick
-
-class Apple {
-  appleTop;
-  appleLeft;
-  apple;
+class Body {
+  // set up body instructions.
   constructor(el) {
-    this.node = document.createElement('img');
-    this.node.setAttribute('id', 'apple');
-    this.node.setAttribute('src', 'src/assets/food.jpg');
+    this.snakeBody = []; //or can be an image that we keep appending to the head
+    this.length = 0;
+    this.top = 0;
+    this.left = 0;
+    this.board = el;
+  }
 
-
-    el.appendChild(this.node);
-    this.node.style.top = (Math.floor((Math.random() * 700) / 50)) * 50 + 'px';
-    this.node.style.left = (Math.floor((Math.random() * 700) / 50)) * 50 + 'px';
-
-    this.appleTop = this.node.style.top;
-    this.appleLeft = this.node.style.left;
-    this.apple = this.node;
+  // each time eats an apple, will get bigger by one unit
+  // create a fucn to update body each time eat apple, accept oldTop, oldLeftl/
+  update(oldTop, oldLeft) {
+    this.top = oldTop;
+    this.left = oldLeft;
+    let newTop = `${this.top}px`;
+    let newLeft = `${this.left}px`;
+    let tempTop;
+    let tempLeft;
+    for (let i = 0; i < this.snakeBody.length; i += 1) {
+      tempTop = this.snakeBody[i].current.style.top;
+      tempLeft = this.snakeBody[i].current.style.left;
+      this.snakeBody[i].current.style.top = newTop;
+      this.snakeBody[i].current.style.left = newLeft;
+      newTop = tempTop;
+      newLeft = tempLeft;
+    }
   }
 }
