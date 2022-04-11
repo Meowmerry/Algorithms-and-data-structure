@@ -1,19 +1,19 @@
-class Node{
-    constructor(val){
+class Node {
+    constructor(val) {
         this.val = val;
         this.next = null;
     }
 }
 
-class SinglyLinkedList{
-    constructor(){
+class SinglyLinkedList {
+    constructor() {
         this.head = null;
         this.tail = null;
         this.length = 0;
     }
-    push(val){
+    push(val) {
         var newNode = new Node(val);
-        if(!this.head){
+        if (!this.head) {
             this.head = newNode;
             this.tail = this.head;
         } else {
@@ -28,3 +28,9 @@ class SinglyLinkedList{
 var list = new SinglyLinkedList()
 // list.push("HELLO")
 // list.push("GOODBYE")
+// console.log(list)
+list.push(10)
+list.push(20)
+list.push(30)
+list.push(40)
+console.log(list)
