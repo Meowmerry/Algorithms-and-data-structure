@@ -98,6 +98,42 @@ class LinkedList {
         }
         return -1;
     }
+    // finds the index of element
+    indexOf(val) {
+        let count = 0;
+        let current = this.head;
+
+        // iterate over the list
+        while (current != null) {
+            // compare each element of the list, with given element
+            if (current.val === val)
+                return count;
+            count++;
+            current = current.next;
+        }
+
+        // not found
+        return -1;
+    }
+    // checks the list for empty
+    isEmpty() {
+        return this.length == 0;
+    }
+
+    // gives the size of the list
+    size_of_list() {
+        console.log(this.length);
+    }
+    // prints the list items
+    printList() {
+        let curr = this.head;
+        let str = "";
+        while (curr) {
+            str += curr.element + " ";
+            curr = curr.next;
+        }
+        console.log(str);
+    }
 }
 const list = new LinkedList();
 list.push(10)
