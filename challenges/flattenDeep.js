@@ -24,7 +24,7 @@ function flattenDeep(array) {
   return output;
 }
 
-// Solution 3
+// Solution 3  , Time Complexity : O(n)
 function flattenDeep(array) {
   const flat = [];
   for (let element of array) {
