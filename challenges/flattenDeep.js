@@ -10,7 +10,7 @@ function flattenDeep(array) {
     []
   );
 }
-
+console.log(flattenDeep([1, [2, 3, [4]]]))
 // Solution 2
 function flattenDeep(array) {
   let output = [];
