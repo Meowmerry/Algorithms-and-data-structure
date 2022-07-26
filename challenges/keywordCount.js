@@ -10,4 +10,43 @@ ex.
 const myObj = { a: 'hi', b: 'yo', c: { d: 'ciao', e: 'hi' } };
 keywordCount(myObj, 'hi') --> 2
 keywordCount(myObj, 'bye') --> 0
+
+Input : Object , string
+Output : Number
+
+create a function takes Obj, String as arguments
+    declare a result assign to 0
+    change input Object to be array 
+        check if input will be array then check each element reassign result 
+    return result
 */
+// const keywordCount = (obj, str) => {
+//   return Object.values(obj).reduce((acc, curr) => {
+//     if (typeof curr === "object") {
+//       Object.values(curr).forEach((ele) => {
+//         if (ele === str) {
+//           acc += 1;
+//         }
+//       });
+//     } else if (curr === str) {
+//       acc += 1;
+//     }
+//     return acc;
+//   }, 0);
+// };
+// const myObj = { a: "hi", b: "yo", c: { d: "ciao", e: "hi" } };
+// console.log(keywordCount(myObj, "hi")); //--> 2
+// console.log(keywordCount(myObj, "bye")); //--> 0
+
+
+const keywordCount = (obj, keyword) => {
+       let count = 0;
+       for(let key in obj){
+        if(typeof obj[key] === 'object') count += keywordCount(obj[key], keyword);
+        if(obj[key] === keyword) count +=1;
+       }
+       return count;
+  };
+  const myObj = { a: "hi", b: "yo", c: { d: "ciao", e: "hi" } };
+  console.log(keywordCount(myObj, "hi")); //--> 2
+  console.log(keywordCount(myObj, "bye")); //--> 0
